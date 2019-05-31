@@ -28,11 +28,9 @@
  * This forces a return from smile_decode, but since the state is
  * set to BAD, clients are expected to reset the decoder
  *
- * TODO: don't print the message, store it into strm->msg
  */
 #define ERROR_REPORT(prefix, msg, error) \
     do { \
-        /* TODO Should go in strm->msg */ \
         state->mode = BAD; \
         ret = error; \
         goto out; \

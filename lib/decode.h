@@ -107,8 +107,6 @@ typedef struct s_stream_s {
     struct decode_state* state;   /* State maintained between calls */
     void *workspace;              /* memory allocated for this stream */
 
-    char *msg;                    /* last error message, NULL if no error */
-
     unsigned long reserved;       /* reserved for future use */
 } s_stream;
 

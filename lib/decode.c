@@ -80,7 +80,6 @@ int smile_decode(s_stream *strm)
             if ((hold & 0xff) != ':' ||
                 ((hold >> 8) & 0xff) != ')'||
                 ((hold >> 16) & 0xff) != '\n') {
-                strm->msg = (char *)"incorrect header";
                 state->mode = BAD;
                 break;
             }
@@ -321,7 +320,6 @@ int smile_decode(s_stream *strm)
             ret = 0;
             goto out;
         default:
-            strm->msg = (char *)"shouldn't get here";
             state->mode = BAD;
             goto out;
         }
@@ -382,12 +380,11 @@ int smile_decode_init(s_stream *strm)
 
 int smile_decode_reset(s_stream *strm)
 {
-    if (strm == NULL || strm->workspace == NULL || strm->msg == NULL) {
+    if (strm == NULL || strm->workspace == NULL) {
         return -1;
     }
 
     memset(strm->workspace, '\0', sizeof(struct decode_workspace));
-    memset(strm->msg, '\0', MAX_ERROR_MSG_SIZE);
 
     return smile_decode_init(strm);
 }
