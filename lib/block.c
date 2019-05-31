@@ -36,6 +36,8 @@ int smile_decode_block(void *dst, int dstlen, void *src, int srclen)
     // Decode block
     err = smile_decode(&stream);
     if (err == -1) {
+        free(stream.workspace);
+        free(stream.msg);
         goto err;
     }
 
