@@ -22,7 +22,6 @@ int smile_decode_block(void *dst, int dstlen, void *src, int srclen)
 {
     s_stream stream;
     stream.workspace = malloc(sizeof(struct decode_workspace));
-    stream.msg = malloc(MAX_ERROR_MSG_SIZE);
     smile_decode_init(&stream);
 
     stream.next_in = src;
@@ -39,8 +38,6 @@ int smile_decode_block(void *dst, int dstlen, void *src, int srclen)
     if (err == -1) {
       return -EIO;
     }
-
-    free(stream.msg);
 
     return stream.total_out;
 }
