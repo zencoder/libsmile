@@ -15,6 +15,10 @@ all: $(UNSMILE) $(LIBSMILE)
 $(LIBSMILE): $(SLIBSMILE_OBJS)
 	$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SLIBSMILE_OBJS)
 
+.PHONY: libsmile
+libsmile: $(LIBSMILE_OBJS)
+	$(AR) cru $(LIB_DIR)/libsmile.a $(LIBSMILE_OBJS)
+
 ###########
 # unsmile #
 ###########
