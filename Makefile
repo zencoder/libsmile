@@ -19,7 +19,6 @@ $(LIBSMILE): $(SLIBSMILE_OBJS)
 libsmile: $(LIBSMILE_OBJS)
 	$(AR) cru $(LIB_DIR)/libsmile.a $(LIBSMILE_OBJS)
 
-
 ###########
 # unsmile #
 ###########
